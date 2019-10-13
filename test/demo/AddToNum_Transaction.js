@@ -1,8 +1,9 @@
-import jsTPS_Transaction from "/src/jsTPS"
+import {jsTPS_Transaction} from "/src/jsTPS.js"
 class AddToNum_Transaction extends jsTPS_Transaction {
     constructor(initNum, initAmountToAdd) {
+        super()
         this.num=initNum
-        this.amoutToAdd=initAmountToAdd
+        this.amountToAdd=initAmountToAdd
     }
 
     /**
@@ -10,7 +11,9 @@ class AddToNum_Transaction extends jsTPS_Transaction {
      */
     doTransaction() {
         let oldNum = this.num.getNum();
+        
         let newNum = oldNum + this.amountToAdd;
+        
         this.num.setNum(newNum);
     }
 
@@ -32,3 +35,5 @@ class AddToNum_Transaction extends jsTPS_Transaction {
         return "Add " + amountToAdd;
     }
 }
+
+export default AddToNum_Transaction

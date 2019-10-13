@@ -17,32 +17,32 @@ class jsTPS {
     addTransaction = function(transaction) {
         // ARE THERE OLD UNDONE TRANSACTIONS ON THE STACK THAT FIRST
         // NEED TO BE CLEARED OUT, i.e. ARE WE BRANCHING?
-        if ((mostRecentTransaction < 0)|| (mostRecentTransaction < (transactions.length-1))) {
-            for (let i = transactions.length-1; i > mostRecentTransaction; i--) {
-                transactions.splice(i, 1);
+        if ((this.mostRecentTransaction < 0)|| (this.mostRecentTransaction < (this.transactions.length-1))) {
+            for (let i = this.transactions.length-1; i > this.mostRecentTransaction; i--) {
+                this.transactions.splice(i, 1);
             }
         }
 
         // AND NOW ADD THE TRANSACTION
-        transactions.push(transaction);
+        this.transactions.push(transaction);
 
         // AND EXECUTE IT
-        doTransaction();        
+        this.doTransaction();        
     }
 
     doTransaction = function() {
-        if (hasTransactionToRedo()) {
-            performingDo = true;
-            transaction = transactions[mostRecentTransaction+1];
+        if (this.hasTransactionToRedo()) {
+            this.performingDo = true;
+            let transaction = this.transactions[this.mostRecentTransaction+1];
             transaction.doTransaction();
-            mostRecentTransaction++;
-            performingDo = false;
+            this.mostRecentTransaction++;
+            this.performingDo = false;
         }
     }
 
     peekUndo = function() {
         if (this.hasTransactionToUndo()) {
-            return transactions[mostRecentTransaction];
+            return this.transactions[this.mostRecentTransaction];
         }
         else
             return null;
@@ -50,7 +50,7 @@ class jsTPS {
 
     peekDo = function() {
         if (this.hasTransactionToRedo()) {
-            return transactions[mostRecentTransaction+1];
+            return this.transactions[this.mostRecentTransaction+1];
         }
         else
             return null;
@@ -58,11 +58,11 @@ class jsTPS {
 
     undoTransaction = function() {
         if (this.hasTransactionToUndo()) {
-            performingUndo = true;
-            transaction = transactions[mostRecentTransaction];
+            this.performingUndo = true;
+            let transaction = this.transactions[this.mostRecentTransaction];
             transaction.undoTransaction();
             this.mostRecentTransaction--;
-            performingUndo = false;
+            this.performingUndo = false;
         }
     }
 
@@ -115,4 +115,9 @@ class jsTPS_Transaction {
     undoTransaction() {
 
     }
+}
+
+export {
+    jsTPS,
+    jsTPS_Transaction
 }
