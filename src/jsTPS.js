@@ -108,5 +108,11 @@ class jsTPS {
 } 
 
 class jsTPS_Transaction {
+    doTransaction() {
 
+    }
+
+    undoTransaction() {
+
+    }
 }
