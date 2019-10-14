@@ -32,7 +32,7 @@ class AddToNum_Transaction extends jsTPS_Transaction {
      * @return A string storing a textual summary of this object.
      */
     getSummary() {
-        return "Add " + amountToAdd;
+        return "Add " + this.amountToAdd;
     }
 }
 

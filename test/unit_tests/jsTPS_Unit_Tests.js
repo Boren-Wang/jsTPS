@@ -263,7 +263,7 @@ describe("Test Redoing of Transactions", function() {
             assert.equal(0, tps.getUndoSize());
         })
 
-        it("After 3 transactions again", function() {
+        it("Add 3 transactions again", function() {
             tps.addTransaction(new AddToNum_Transaction(num, 5));
             tps.addTransaction(new AddToNum_Transaction(num, 10));
             tps.addTransaction(new AddToNum_Transaction(num, 20));
@@ -284,7 +284,7 @@ describe("Test Redoing of Transactions", function() {
             assert.equal(0, tps.getUndoSize());
         })
 
-        it("After 3 transactions again", function() {
+        it("Add 3 transactions again", function() {
             tps.addTransaction(new AddToNum_Transaction(num, 5));
             tps.addTransaction(new AddToNum_Transaction(num, 10));
             tps.addTransaction(new AddToNum_Transaction(num, 20));

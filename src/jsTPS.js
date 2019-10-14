@@ -96,12 +96,12 @@ class jsTPS {
     }
 
     getSummary() {
-        const summary = ('--Number of Transactions: '+this.transactions.length+"\n"+
-        "--Current Index on Stack:" + this.mostRecentTransaction+"\n"+
-        "--Current Transaction Stack:\n")
+        let summary = ('--Number of Transactions: '+this.transactions.length+"<br>"+
+        "--Current Index on Stack: " + this.mostRecentTransaction+"<br>"+
+        "--Current Transaction Stack:<br>")
         for(let i=0; i<=this.mostRecentTransaction; i++){
-            transaction = this.transactions[i]
-            summary+="----"+transaction.getSummary()+"\n"
+            let transaction = this.transactions[i]
+            summary+="----"+transaction.getSummary()+"<br>"
         }
         return summary
     }
